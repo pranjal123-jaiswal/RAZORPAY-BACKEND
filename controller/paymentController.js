@@ -36,8 +36,11 @@ export const paymentVerification = async( req , res) => {
        razorpay_order_id ,
         razorpay_signature
     })
-    res.redirect(
-      `http://localhost:3001/paymentsuccess?reference=${razorpay_payment_id}`
+    res.status(200).json({
+      success: false,
+      reference: razorpay_payment_id
+    }
+      // `http://localhost:3000/paymentsuccess?reference=${razorpay_payment_id}`
     );
   } else {
     res.status(400).json({
@@ -53,8 +56,8 @@ export const paymentVerification = async( req , res) => {
     //   };
     //   const order = await instance.orders.create(options)
     //   console.log(order)
-      res.status(200).json({
-        success: true,
-        // order
-      })
+      // res.status(200).json({
+      //   success: true,
+      //   // order
+      // })
 }
